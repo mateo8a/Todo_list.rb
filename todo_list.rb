@@ -174,8 +174,23 @@ if __FILE__ == "todo_list.rb"
     			puts "The task '#{deleted_task}' was deleted from your Todo list."
     		when "5"
     			filename = prompt("What will be the name of the file you'll write on?")
-    		    my_list.write_to_file(filename)
-    			puts "Great! A file named '#{filename}' was created."
+    			if File.file?(filename)
+    				answer = prompt("This file already exists. Do you want to overwrite the existing file with your Todo list?" , "Type 'Y' for yes and 'N' for no: ").downcase
+    				while answer != 'y' && answer != 'n'
+    					puts "I didn't quite get that, let's try again."
+    			    	answer = prompt("Do you want to overwrite the file?" , "'Y' for yes and 'N' for no: ").downcase
+    			    end
+
+    				if answer == 'y'
+    					my_list.write_to_file(filename)
+    			        puts "Great! The file named #{filename} turned into your Todo list."
+    			    elsif answer == 'n'
+    			    	puts "Ok, let's keep working on your new Todo list then."    			  
+    			    end
+    			else
+    		        my_list.write_to_file(filename)
+    			    puts "Great! A file named '#{filename}' was created."
+    			end
     		when "6"
     			filename = prompt("What's the name of the file where the list is in?")
     			my_list.read_from_file(filename)
