@@ -1,7 +1,13 @@
 =begin
 	This program is an interactive todo list.
 	The user is allowed to perform many actions, including:
-
+      Add a task
+      Show all the tasks
+      Update a task
+      Delete a task
+      Write the Todo list to a text file
+      Read a Todo list from a text file
+      Toggle the status of a task
 =end
 
 #Modules
@@ -52,7 +58,7 @@ class List
 		#@all_tasks.map {|task| puts task.description}
 		@all_tasks.map do |task| 					#Alternatively: all_tasks.map.with_index { |l, i| "(#{i.next}): #{l.description}"}
 			task_index = @all_tasks.index(task) + 1
-            "(#{task_index}): #{task.description}" 
+            "(#{task_index}): #{task.description} #{task.completed? ? "[X]" : "[ ]"}"  
         end
 	end
 
