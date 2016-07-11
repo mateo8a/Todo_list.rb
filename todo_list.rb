@@ -162,13 +162,13 @@ if __FILE__ == "todo_list.rb"
     		when "3"
     			puts my_list.show
     			task_number = (prompt("Give me the number of the task you want to update", "Task number: ")).to_i 
-    			if task_number > my_list.length
+    			while task_number > my_list.length
     				puts "Such a task doesn't exist. You thought you could fool me but you can't!"
-    			else
-    			    updated_task = Task.new(prompt("What do you want the new task to be?", "Update task with: "))
-    			    my_list.update(task_number, updated_task)
-    			    puts "Task number #{task_number} has been updated successfully!"
+    				task_number = (prompt("Which task do you want to actualy update?", "Task number: ")).to_i 
     			end
+    			updated_task = Task.new(prompt("What do you want the new task to be?", "Update task with: "))
+    			my_list.update(task_number, updated_task)
+    			puts "Task number #{task_number} has been updated successfully!"
     		when "4"
     			puts "Here is your list!"
     			puts my_list.show
