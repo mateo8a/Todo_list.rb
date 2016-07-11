@@ -150,6 +150,10 @@ if __FILE__ == "todo_list.rb"
     	case user_input
     	    when "1"
     		    new_task = prompt("What task do you want to add?")
+    		    while new_task.length == 0
+    		    	puts "You cannot add an empty task you silly! Let's do this again."
+    		    	new_task = prompt("What task do you want to add?")
+    		    end
     		    my_list.add(Task.new(new_task))
     		    puts "The task '#{new_task}' was added to your list!"
     	    when "2"
