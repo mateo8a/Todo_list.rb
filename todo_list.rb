@@ -173,6 +173,10 @@ if __FILE__ == "todo_list.rb"
     			puts "Here is your list!"
     			puts my_list.show
     			task_number = (prompt("Input the number of the task you want to delete.", "Task number: ")).to_i 
+    			while task_number > my_list.length
+    				puts "This task doesn't exist!"
+    			    task_number = (prompt("Maybe try one that exists?", "Task number: ")).to_i 
+    			end
     			deleted_task = (my_list.indexx(task_number - 1)).description
     			my_list.delete(task_number)
     			puts "The task '#{deleted_task}' was deleted from your Todo list."
